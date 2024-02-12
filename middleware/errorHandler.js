@@ -14,13 +14,13 @@ class ErrorHandler {
     try {
       if (!req.body.userDetails) {
         httpResponse.sendError(errors.INVALID_USER, res, next);
+      } else {
+        req.body.isUser = req.body.userDetails.role_id === roles.USER;
+
+        await asyncFn(req, res, next);
+
+        httpResponse.send(req, res);
       }
-
-      req.body.isUser = req.body.userDetails.role_id === roles.USER;
-
-      await asyncFn(req, res, next);
-
-      httpResponse.send(req, res);
     } catch (err) {
       const errorDetails = {
         "Error Type": err && err.name ? err.name : errors.UNKNOWN,
