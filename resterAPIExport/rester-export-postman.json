@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "RESTer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GMS",
+      "item": [
+        {
+          "name": "1:HOME",
+          "item": [
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/home",
+                "method": "GET",
+                "header": []
+              },
+              "id": "rester-11",
+              "name": "1:home"
+            }
+          ]
+        },
+        {
+          "name": "2: GROCERY",
+          "item": [
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/getProductList",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"offset\": 0,\n    \"limit\": 10,\n    \"productName\": \"\"\n}"
+                }
+              },
+              "id": "rester-10",
+              "name": "1:getProductList"
+            },
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/addProduct",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"skuId\": \"SKU123\",\n    \"productName\": \"Product1\",\n    \"productDescription\": \"Description1\",\n    \"quantity\": 10,\n    \"price\":10\n}"
+                }
+              },
+              "id": "rester-12",
+              "name": "2:addProduct"
+            },
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/editProduct",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"productId\": 1,\n    \"productName\": \"Aditya\",\n    \"productDescription\": \"Aditya\",\n    \"quantity\": 10,\n    \"price\": 100\n}"
+                }
+              },
+              "id": "rester-13",
+              "name": "3:editProduct"
+            },
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/removeProduct",
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"productIds\": [\n        1\n    ]\n}"
+                }
+              },
+              "id": "rester-14",
+              "name": "4:removeProduct"
+            },
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/updateProductInventory",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"quantity\": 2,\n    \"productId\": 1\n}"
+                }
+              },
+              "id": "rester-15",
+              "name": "5:updateProductInventory"
+            }
+          ]
+        },
+        {
+          "name": "3: ORDER",
+          "item": [
+            {
+              "request": {
+                "url": "http://localhost:9000/api/v1/placeOrder",
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userEmail\": \"admin_user\",\n    \"productDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 1,\n            \"pricePerUnit\": 100,\n            \"totalAmount\": 100\n        }\n    ],\n    \"totalAmount\": 100\n}"
+                }
+              },
+              "id": "rester-16",
+              "name": "1:placeOrder"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
