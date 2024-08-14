@@ -9,50 +9,15 @@
   },
   "ENVIRONMENTS": {
     "LOCAL": "local",
-    "DEVELOPMENT": "dev",
-    "PRODUCTION": "prod"
+    "DEVELOPMENT": "devlopment",
+    "PRODUCTION": "production"
   },
   "SERVER_LISTENER": "Server is now listening on port : ",
   "API_PATH": {
     "VERSION_1": "/api/v1"
   },
-  "API_RESPONSES": {
-    "HOME_URL": "API - Grocery Booking Home URL !!!",
-    "PRODUCT_LIST": "Product List Fetched Successfully!",
-    "ADD_PRODUCT": "Product Added Successfully!",
-    "PRODUCT_EXISTS": "Product Already Exists!",
-    "PRODUCT_NOT_FOUND": "Product Not Exists!",
-    "EDIT_PRODUCT": "Product Updated Successfully!",
-    "REMOVE_PRODUCT": "Product Removed Successfully!",
-    "UPDATE_PRODUCT_INVENTORY": "Product Inventory Updated Successfully!",
-    "PRODUCT_OUT_OF_STOCK": "Units are less or not available for Product - ",
-    "ORDER_PLACED": "Order Placed Successfully!"
-  },
+  "API_RESPONSES": {},
   "API_NAMES": {
-    "HOME": { "ACCESS": ["admin", "user"], "NAME": "/home" },
-    "GET_PRODUCT_LIST": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/getProductList"
-    },
-    "ADD_PRODUCT": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/addProduct"
-    },
-    "EDIT_PRODUCT": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/editProduct"
-    },
-    "REMOVE_PRODUCT": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/removeProduct"
-    },
-    "UPDATE_PRODUCT_INVENTORY": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/updateProductInventory"
-    },
-    "PLACE_ORDER": {
-      "ACCESS": ["admin", "user"],
-      "NAME": "/placeOrder"
-    }
+    "HOME": { "ACCESS": ["admin", "user"], "NAME": "/home" }
   }
 }

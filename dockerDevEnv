@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # overwrite .env with devl.env to use devl parameters
-COPY devl.env .env 
+COPY dev.env .env 
 # Expose port for API calls
 EXPOSE 9000
 

@@ -4,11 +4,11 @@ const connectDB = new ConnectDB();
 
 class UserRolesAccessor {
   async getUserDetails(userEmail) {
-    return connectDB
-      .getDBConnection()
-      .oneOrNone(`SELECT role_id FROM "user".usermaster WHERE username = $1`, [
-        userEmail,
-      ]);
+    // return connectDB
+    //   .getDBConnection()
+    //   .oneOrNone(`SELECT role_id FROM "user".usermaster WHERE username = $1`, [
+    //     userEmail,
+    //   ]);
   }
 }
 
