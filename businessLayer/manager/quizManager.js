@@ -12,18 +12,13 @@ class QuizManager {
   }
 
   async quizAnswer(userId, quizId, questionId, selectedOption) {
-    const quizQuestions = await quizAccessor.quizQuestions(quizId);
-    return quizAccessor.quizAnswer(
-      userId,
-      quizQuestions,
-      questionId,
-      selectedOption,
-      quizId
-    );
+    await quizAccessor.quizQuestions(quizId);
+    return quizAccessor.quizAnswer(userId, questionId, selectedOption, quizId);
   }
 
-  async quizResults() {
-    return quizAccessor.quizResults();
+  async quizResults(userId, quizId) {
+    const quizQuestions = await quizAccessor.quizQuestions(quizId);
+    return quizAccessor.quizResults(userId, quizId, quizQuestions.length);
   }
 }
 

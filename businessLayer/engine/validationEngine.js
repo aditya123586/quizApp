@@ -39,6 +39,7 @@ class ValidationEngine {
             correctOption: Joi.number().integer().min(0).max(3).required(),
           })
         )
+        .min(1)
         .required()
         .custom(this.uniqueIds), // The array of questions is required
     });
