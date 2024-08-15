@@ -1,11 +1,8 @@
 {
   "ERRORS": {
     "UNKNOWN": "Unknown Error",
-    "INVALID_USER": "Invalid User!"
-  },
-  "ROLES": {
-    "ADMIN": 1,
-    "USER": 2
+    "INVALID_USER": "Invalid User!",
+    "ACCESS_DENIED": "Access Not Available for User!"
   },
   "ENVIRONMENTS": {
     "LOCAL": "local",
@@ -16,8 +13,14 @@
   "API_PATH": {
     "VERSION_1": "/api/v1"
   },
-  "API_RESPONSES": {},
+  "API_RESPONSES": {
+    "QUIZ_HOME": "Welcome to Quiz App!"
+  },
+  "ROLES": {
+    "ADMIN": 1,
+    "USER": 2
+  },
   "API_NAMES": {
-    "HOME": { "ACCESS": ["admin", "user"], "NAME": "/home" }
+    "HOME": { "ACCESS": [1, 2], "NAME": "/home" }
   }
 }

@@ -1,14 +1,17 @@
 const ConnectDB = require("../databaseConfiguration/connectDB");
+const StringMessageAccessor = require("../dataAccess/stringMessageAccessor");
 
 const connectDB = new ConnectDB();
+const stringMessageAccessor = new StringMessageAccessor();
+
+const roles = stringMessageAccessor.getMessages("en").ROLES;
 
 class UserRolesAccessor {
   async getUserDetails(userEmail) {
-    // return connectDB
-    //   .getDBConnection()
-    //   .oneOrNone(`SELECT role_id FROM "user".usermaster WHERE username = $1`, [
-    //     userEmail,
-    //   ]);
+    return {
+      roleID: roles.ADMIN,
+      userEmail,
+    };
   }
 }
 

@@ -7,16 +7,15 @@ const httpResponse = new HttpResponse();
 const stringMessageAccessor = new StringMessageAccessor();
 
 const errors = stringMessageAccessor.getMessages("en").ERRORS;
-const roles = stringMessageAccessor.getMessages("en").ROLES;
 
 class ErrorHandler {
-  handlError = (asyncFn) => async (req, res, next) => {
+  handlError = (asyncFn, rolesPermitted) => async (req, res, next) => {
     try {
       if (!req.body.userDetails) {
         httpResponse.sendError(errors.INVALID_USER, res, next);
+      } else if (!rolesPermitted.includes(req.body.userDetails.roleID)) {
+        httpResponse.sendError(errors.ACCESS_DENIED, res, next);
       } else {
-        req.body.isUser = req.body.userDetails.role_id === roles.USER;
-
         await asyncFn(req, res, next);
 
         httpResponse.send(req, res);
