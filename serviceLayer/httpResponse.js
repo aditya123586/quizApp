@@ -12,11 +12,11 @@ class HttpResponse {
     });
   }
 
-  sendError(exception, res, next) {
+  sendError(exception, res, next, data = {}) {
     const status = 500;
     const message = exception.message ? exception.message : exception;
-    const errorCode = 1;
-    const data = {};
+    const errorCode = -1;
+
     res.status(status).send({
       message,
       errorCode,

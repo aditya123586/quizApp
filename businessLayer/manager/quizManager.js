@@ -3,12 +3,12 @@ const QuizAccessor = require("../../dataAccess/quizAccessor");
 const quizAccessor = new QuizAccessor();
 
 class QuizManager {
-  async createQuiz() {
-    return quizAccessor.createQuiz();
+  async createQuiz(quizData) {
+    return quizAccessor.createQuiz(quizData);
   }
 
-  async quizQuestions() {
-    return quizAccessor.quizQuestions();
+  async quizQuestions(quizId) {
+    return quizAccessor.quizQuestions(quizId);
   }
 
   async quizAnswers() {

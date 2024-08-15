@@ -9,11 +9,11 @@ const responses = stringMessageAccessor.getMessages("en").API_RESPONSES;
 class QuizService {
   async createQuiz(req) {
     req.tempStore.message = responses.CREATE_QUIZ;
-    return quizManager.createQuiz();
+    req.tempStore.data = await quizManager.createQuiz(req.body);
   }
 
   async quizQuestions(req) {
-    return quizManager.quizQuestions();
+    return quizManager.quizQuestions(req.query.id);
   }
 
   async quizAnswers(req) {
