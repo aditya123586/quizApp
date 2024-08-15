@@ -5,6 +5,7 @@ const stringMessageAccessor = new StringMessageAccessor();
 const responses = stringMessageAccessor.getMessages("en").API_RESPONSES;
 
 const quizMaster = [];
+const quizResultMaster = {};
 
 class QuizAccessor {
   async createQuiz(quizData) {
@@ -39,7 +40,8 @@ class QuizAccessor {
     );
   }
 
-  async quizAnswer(quizQuestions, questionId, selectedOption) {
+  async quizAnswer(userId, quizQuestions, questionId, selectedOption, quizId) {
+    console.log(JSON.stringify(quizResultMaster, null, 4));
     const question = quizQuestions.filter((question) => {
       return question.id == questionId;
     });
@@ -48,10 +50,29 @@ class QuizAccessor {
       throw new Error(`${responses.INVALID_QUESTION_ID} ${questionId}`);
     }
 
-    return {
-      correctAnswer: question[0]["options"][question[0].correct_option],
-      isCorrect: question[0].correct_option == selectedOption,
-    };
+    if (!quizResultMaster[userId]) {
+      quizResultMaster[userId] = {}; // Initialize an object for the user if it doesn't exist
+    }
+
+    if (!quizResultMaster[userId][quizId]) {
+      quizResultMaster[userId][quizId] = {}; // Initialize an object for the quiz if it doesn't exist
+    }
+
+    if (!quizResultMaster[userId][quizId][questionId]) {
+      const isCorrect = question[0].correct_option == selectedOption;
+
+      quizResultMaster[userId][quizId][questionId] = {
+        selectedOption: question[0]["options"][selectedOption],
+        isCorrect,
+      }; // Initialize an object for the question if it doesn't exist
+
+      return {
+        correctAnswer: question[0]["options"][question[0].correct_option],
+        isCorrect,
+      };
+    } else {
+      throw new Error(`${responses.ALREADY_ANSWERED} ${questionId}`);
+    }
   }
 
   async quizResults() {}

@@ -20,6 +20,7 @@ class QuizService {
   async quizAnswer(req) {
     req.tempStore.message = responses.QUIZ_ANSWER;
     req.tempStore.data = await quizManager.quizAnswer(
+      req.body.user_id,
       req.body.quiz_id,
       req.body.question_id,
       req.body.selected_option

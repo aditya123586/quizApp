@@ -21,7 +21,8 @@
     "INVALID_QUIZ_ID": "No Quiz Found! Invalid Quiz ID:",
     "QUIZ_FOUND": "Quiz Found successfully!",
     "INVALID_QUESTION_ID": "No Question Found! Invalid Question ID:",
-    "QUIZ_ANSWER": "Answer fetched Successfully!"
+    "QUIZ_ANSWER": "Answer fetched Successfully!",
+    "ALREADY_ANSWERED": "Question Already Answered"
   },
   "ROLES": {
     "ADMIN": 1,
