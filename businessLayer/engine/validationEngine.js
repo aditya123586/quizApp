@@ -19,13 +19,13 @@ class ValidationEngine {
 
   homeSchema() {
     return Joi.object({
-      user_id: Joi.number().integer().positive().required(), // ID of the user
+      userId: Joi.number().integer().positive().required(), // ID of the user
     });
   }
 
   createQuizSchema() {
     return Joi.object({
-      user_id: Joi.number().integer().positive().required(), // ID of the user
+      userId: Joi.number().integer().positive().required(), // ID of the user
       title: Joi.string().required(), // The title field is required and must be a string
       questions: Joi.array()
         .items(
@@ -36,7 +36,7 @@ class ValidationEngine {
               .items(Joi.string().required())
               .length(4)
               .required(), // Options array with exactly 4 strings
-            correct_option: Joi.number().integer().min(0).max(3).required(),
+            correctOption: Joi.number().integer().min(0).max(3).required(),
           })
         )
         .required()
@@ -46,24 +46,24 @@ class ValidationEngine {
 
   quizQuestionsSchema() {
     return Joi.object({
-      user_id: Joi.number().integer().positive().required(), // ID of the user
+      userId: Joi.number().integer().positive().required(), // ID of the user
       quizId: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
     });
   }
 
   quizAnswerSchema() {
     return Joi.object({
-      user_id: Joi.number().integer().positive().required(), // ID of the user
-      quiz_id: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
-      question_id: Joi.number().integer().positive().required(), // ID of the question being answered
-      selected_option: Joi.number().integer().min(0).max(3).required(), // Index of the selected answer
+      userId: Joi.number().integer().positive().required(), // ID of the user
+      quizId: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
+      questionId: Joi.number().integer().positive().required(), // ID of the question being answered
+      selectedOption: Joi.number().integer().min(0).max(3).required(), // Index of the selected answer
     });
   }
 
   quizResultsSchema() {
     return Joi.object({
-      user_id: Joi.number().integer().positive().required(), // ID of the user
-      quiz_id: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
+      userId: Joi.number().integer().positive().required(), // ID of the user
+      quizId: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
     });
   }
 }

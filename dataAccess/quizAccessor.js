@@ -15,7 +15,7 @@ class QuizAccessor {
       id,
       title: quizData.title,
       questions: quizData.questions,
-      createdBy: quizData.user_id,
+      createdBy: quizData.userId,
       createdDate: new Date(),
     });
 
@@ -59,7 +59,7 @@ class QuizAccessor {
     }
 
     if (!quizResultMaster[userId][quizId][questionId]) {
-      const isCorrect = question[0].correct_option == selectedOption;
+      const isCorrect = question[0].correctOption == selectedOption;
 
       quizResultMaster[userId][quizId][questionId] = {
         selectedOption: question[0]["options"][selectedOption],
@@ -67,7 +67,7 @@ class QuizAccessor {
       }; // Initialize an object for the question if it doesn't exist
 
       return {
-        correctAnswer: question[0]["options"][question[0].correct_option],
+        correctAnswer: question[0]["options"][question[0].correctOption],
         isCorrect,
       };
     } else {
