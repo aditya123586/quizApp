@@ -3,7 +3,8 @@
     "UNKNOWN": "Unknown Error",
     "INVALID_USER": "Invalid User!",
     "ACCESS_DENIED": "Access Not Available for User!",
-    "INVALID_PAYLOAD": "Invalid payload. Check Validations!"
+    "INVALID_PAYLOAD": "Invalid payload. Check Validations!",
+    "DUPLICATE_ID": "IDs must be unique. Duplicate ID found:"
   },
   "ENVIRONMENTS": {
     "LOCAL": "local",

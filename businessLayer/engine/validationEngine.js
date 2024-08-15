@@ -1,7 +1,21 @@
 const Joi = require("@hapi/joi");
+const StringMessageAccessor = require("../../dataAccess/stringMessageAccessor");
+
+const stringMessageAccessor = new StringMessageAccessor();
+
+const errors = stringMessageAccessor.getMessages("en").ERRORS;
 
 class ValidationEngine {
   constructor() {
+    this.uniqueIds = (array, helper) => {
+      const ids = array.map((item) => item.id);
+      const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+      if (duplicates.length > 0) {
+        return helper.message(`${errors.DUPLICATE_ID} ${duplicates[0]}`);
+      }
+      return array;
+    };
+
     this.questionSchema = Joi.object({
       id: Joi.number().integer().positive().required(), // Unique identifier for the question
       text: Joi.string().required(), // The question field is required
@@ -25,7 +39,10 @@ class ValidationEngine {
     this.quizSchema = Joi.object({
       id: Joi.number().integer().positive().required(), // Unique identifier for the quiz
       title: Joi.string().required(), // Title of the quiz
-      questions: Joi.array().items(this.questionSchema).required(), // List of questions
+      questions: Joi.array()
+        .items(this.questionSchema)
+        .required()
+        .custom(this.uniqueIds), // List of questions
     });
   }
 
@@ -39,7 +56,10 @@ class ValidationEngine {
     return Joi.object({
       user_id: Joi.number().integer().positive().required(), // ID of the user
       title: Joi.string().required(), // The title field is required and must be a string
-      questions: Joi.array().items(this.questionSchema).required(), // The array of questions is required
+      questions: Joi.array()
+        .items(this.questionSchema)
+        .required()
+        .custom(this.uniqueIds), // The array of questions is required
     });
   }
 
