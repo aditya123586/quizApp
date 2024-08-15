@@ -31,6 +31,8 @@ class QuizAccessor {
     if (!quizQuestions.length) {
       throw new Error(responses.INVALID_QUIZ_ID);
     }
+
+    return quizQuestions[0].questions.map(({ answer, ...rest }) => rest);
   }
 
   async quizAnswers() {}

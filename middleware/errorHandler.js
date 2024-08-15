@@ -6,7 +6,7 @@ const logger = new Logger();
 const httpResponse = new HttpResponse();
 const stringMessageAccessor = new StringMessageAccessor();
 
-const errors = stringMessageAccessor.getMessages("en").API_RESPONSES;
+const errors = stringMessageAccessor.getMessages("en").ERRORS;
 
 class ErrorHandler {
   handlError = (asyncFn, rolesPermitted, schema) => async (req, res, next) => {
@@ -22,7 +22,6 @@ class ErrorHandler {
 
         if (error) {
           req.tempStore.data = error;
-
           httpResponse.sendError(errors.INVALID_PAYLOAD, res, next, error);
         } else {
           await asyncFn(req, res, next);

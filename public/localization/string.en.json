@@ -17,7 +17,8 @@
   "API_RESPONSES": {
     "QUIZ_HOME": "Welcome to Quiz App!",
     "CREATE_QUIZ": "Quiz created successfully!",
-    "INVALID_QUIZ_ID": "No Quiz Found!"
+    "INVALID_QUIZ_ID": "No Quiz Found!",
+    "QUIZ_FOUND": "Quiz Found successfully!"
   },
   "ROLES": {
     "ADMIN": 1,
