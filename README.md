@@ -1,10 +1,8 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Introduction
 
-# SQL Scripts
-TODO: Refer Folder DB-Scripts.
+It is a quiz application that allows users to answer multiple-choice
+questions and receive feedback on their performance.
 
 # API Sample
-TODO: Refer Folder resterAPIExport and import it in rester.
 
-
+TODO: Refer Folder resterAPIExport and import it in rester for testing APIS.

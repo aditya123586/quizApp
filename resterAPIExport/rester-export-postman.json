@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "RESTer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "quizApp",
+      "item": [
+        {
+          "request": {
+            "url": "http://localhost:9000/api/v1/home?userId=1",
+            "method": "GET",
+            "header": []
+          },
+          "id": "rester-46",
+          "name": "1:home"
+        },
+        {
+          "request": {
+            "url": "http://localhost:9000/api/v1/createQuiz",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": \"1\",\n    \"title\": \"Survey on Preferences\",\n    \"questions\": [\n        {\n            \"questionId\": \"1\",\n            \"text\": \"What is your favorite color?\",\n            \"options\": [\n                \"Red\",\n                \"Blue\",\n                \"Green\",\n                \"Yellow\"\n            ],\n            \"correctOption\": 1\n        },\n        {\n            \"questionId\": \"2\",\n            \"text\": \" What is your preferred mode of transport?\",\n            \"options\": [\n                \"Car\",\n                \"Bike\",\n                \"Bus\",\n                \"Train\"\n            ],\n            \"correctOption\": 0\n        }\n    ]\n}"
+            }
+          },
+          "id": "rester-47",
+          "name": "2:createQuiz"
+        },
+        {
+          "request": {
+            "url": "http://localhost:9000/api/v1/quizQuestions?quizId=1723727167851&userId=2",
+            "method": "GET",
+            "header": []
+          },
+          "id": "rester-48",
+          "name": "3:quizQuestions"
+        },
+        {
+          "request": {
+            "url": "http://localhost:9000/api/v1/quizAnswer",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": \"1\",\n    \"quizId\": \"1723727289528\",\n    \"questionId\": \"2\",\n    \"selectedOption\": \"0\"\n}"
+            }
+          },
+          "id": "rester-49",
+          "name": "4:quizAnswer"
+        },
+        {
+          "request": {
+            "url": "http://localhost:9000/api/v1/quizResult?quizId=1723733411433&userId=1",
+            "method": "GET",
+            "header": []
+          },
+          "id": "rester-50",
+          "name": "4:quizResult"
+        }
+      ]
+    }
+  ]
+}

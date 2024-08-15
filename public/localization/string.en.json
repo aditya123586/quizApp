@@ -31,7 +31,7 @@
     "USER": 2
   },
   "API_NAMES": {
-    "HOME": { "ACCESS": [1, 2], "NAME": "/home" },
+    "HOME": { "ACCESS": [1], "NAME": "/home" },
     "CREATE_QUIZ": { "ACCESS": [1], "NAME": "/createQuiz" },
     "QUIZ_QUESTIONS": { "ACCESS": [1], "NAME": "/quizQuestions" },
     "QUIZ_ANSWER": { "ACCESS": [1], "NAME": "/quizAnswer" },
