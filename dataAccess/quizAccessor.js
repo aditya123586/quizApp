@@ -14,7 +14,7 @@ class QuizAccessor {
       id,
       title: quizData.title,
       questions: quizData.questions,
-      createdBy: quizData.userEmail,
+      createdBy: quizData.user_id,
       createdDate: new Date(),
     });
 
@@ -25,7 +25,7 @@ class QuizAccessor {
 
   async quizQuestions(quizId) {
     const quizQuestions = quizMaster.filter((quiz) => {
-      return (quiz.id = quizId);
+      return quiz.id === quizId;
     });
 
     if (!quizQuestions.length) {
