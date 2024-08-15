@@ -1,11 +1,23 @@
-// const UserRolesAccessor = require("../../dataAccess/userRolesAccessor");
+const QuizAccessor = require("../../dataAccess/quizAccessor");
 
-// const userRolesAccessor = new UserRolesAccessor();
+const quizAccessor = new QuizAccessor();
 
-class quizManager {
-  // async getUserDetails(userEmail) {
-  //   return userRolesAccessor.getUserDetails(userEmail);
-  // }
+class QuizManager {
+  async createQuiz() {
+    return quizAccessor.createQuiz();
+  }
+
+  async quizQuestions() {
+    return quizAccessor.quizQuestions();
+  }
+
+  async quizAnswers() {
+    return quizAccessor.quizAnswers();
+  }
+
+  async quizResults() {
+    return quizAccessor.quizResults();
+  }
 }
 
-module.exports = quizManager;
+module.exports = QuizManager;

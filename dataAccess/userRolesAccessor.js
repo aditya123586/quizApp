@@ -1,7 +1,5 @@
-const ConnectDB = require("../databaseConfiguration/connectDB");
 const StringMessageAccessor = require("../dataAccess/stringMessageAccessor");
 
-const connectDB = new ConnectDB();
 const stringMessageAccessor = new StringMessageAccessor();
 
 const roles = stringMessageAccessor.getMessages("en").ROLES;

@@ -2,7 +2,8 @@
   "ERRORS": {
     "UNKNOWN": "Unknown Error",
     "INVALID_USER": "Invalid User!",
-    "ACCESS_DENIED": "Access Not Available for User!"
+    "ACCESS_DENIED": "Access Not Available for User!",
+    "INVALID_PAYLOAD": "Invalid payload. Check Validations!"
   },
   "ENVIRONMENTS": {
     "LOCAL": "local",
@@ -14,13 +15,15 @@
     "VERSION_1": "/api/v1"
   },
   "API_RESPONSES": {
-    "QUIZ_HOME": "Welcome to Quiz App!"
+    "QUIZ_HOME": "Welcome to Quiz App!",
+    "CREATE_QUIZ": "Quiz created successfully!"
   },
   "ROLES": {
     "ADMIN": 1,
     "USER": 2
   },
   "API_NAMES": {
-    "HOME": { "ACCESS": [1, 2], "NAME": "/home" }
+    "HOME": { "ACCESS": [1, 2], "NAME": "/home" },
+    "CREATE_QUIZ": { "ACCESS": [1, 2], "NAME": "/createQuiz" }
   }
 }

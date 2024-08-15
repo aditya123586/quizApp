@@ -9,16 +9,26 @@ const stringMessageAccessor = new StringMessageAccessor();
 const errors = stringMessageAccessor.getMessages("en").ERRORS;
 
 class ErrorHandler {
-  handlError = (asyncFn, rolesPermitted) => async (req, res, next) => {
+  handlError = (asyncFn, rolesPermitted, schema) => async (req, res, next) => {
     try {
-      if (!req.body.userDetails) {
+      if (!req.tempStore.data.userDetails) {
         httpResponse.sendError(errors.INVALID_USER, res, next);
-      } else if (!rolesPermitted.includes(req.body.userDetails.roleID)) {
+      } else if (
+        !rolesPermitted.includes(req.tempStore.data.userDetails.roleID)
+      ) {
         httpResponse.sendError(errors.ACCESS_DENIED, res, next);
       } else {
-        await asyncFn(req, res, next);
+        const { error } = schema.validate(req.body);
 
-        httpResponse.send(req, res);
+        if (error) {
+          req.tempStore.data = error;
+
+          httpResponse.sendError(errors.INVALID_PAYLOAD, res, next);
+        } else {
+          await asyncFn(req, res, next);
+
+          httpResponse.send(req, res);
+        }
       }
     } catch (err) {
       const errorDetails = {

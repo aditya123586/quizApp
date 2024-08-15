@@ -12,7 +12,7 @@ class Authenticate {
   async permitUser(req, res, next) {
     //Verifying if the user exists, and if so, retrieving their roles to determine API access permissions.
     const userDetails = await userAccessService.getUserDetails(req);
-    req.body.userDetails = userDetails;
+    req.tempStore.data.userDetails = userDetails;
 
     next();
   }
