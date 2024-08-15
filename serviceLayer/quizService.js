@@ -17,8 +17,13 @@ class QuizService {
     req.tempStore.data = await quizManager.quizQuestions(req.query.id);
   }
 
-  async quizAnswers(req) {
-    return quizManager.quizAnswers();
+  async quizAnswer(req) {
+    req.tempStore.message = responses.QUIZ_ANSWER;
+    req.tempStore.data = await quizManager.quizAnswer(
+      req.body.quiz_id,
+      req.body.question_id,
+      req.body.selected_option
+    );
   }
 
   async quizResults(req) {

@@ -40,4 +40,13 @@ route.get(
   )
 );
 
+route.post(
+  apiAddress.QUIZ_ANSWER.NAME,
+  errorHandler.handlError(
+    quizService.quizAnswer,
+    apiAddress.QUIZ_ANSWER.ACCESS,
+    validationEngine.quizAnswerSchema()
+  )
+);
+
 module.exports = route;

@@ -11,8 +11,9 @@ class QuizManager {
     return quizAccessor.quizQuestions(quizId);
   }
 
-  async quizAnswers() {
-    return quizAccessor.quizAnswers();
+  async quizAnswer(quizId, questionId, selectedOption) {
+    const quizQuestions = await quizAccessor.quizQuestions(quizId);
+    return quizAccessor.quizAnswer(quizQuestions, questionId, selectedOption);
   }
 
   async quizResults() {
