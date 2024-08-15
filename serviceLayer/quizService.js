@@ -14,7 +14,7 @@ class QuizService {
 
   async quizQuestions(req) {
     req.tempStore.message = responses.QUIZ_FOUND;
-    req.tempStore.data = await quizManager.quizQuestions(req.query.id);
+    req.tempStore.data = await quizManager.quizQuestions(req.query.quizId);
   }
 
   async quizAnswer(req) {
@@ -28,7 +28,7 @@ class QuizService {
   }
 
   async quizResults(req) {
-    return quizManager.quizResults();
+    return quizManager.quizResults(req.query.user_id, req.query.quiz_id);
   }
 }
 

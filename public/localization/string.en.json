@@ -32,6 +32,7 @@
     "HOME": { "ACCESS": [1, 2], "NAME": "/home" },
     "CREATE_QUIZ": { "ACCESS": [1], "NAME": "/createQuiz" },
     "QUIZ_QUESTIONS": { "ACCESS": [1], "NAME": "/quizQuestions" },
-    "QUIZ_ANSWER": { "ACCESS": [1], "NAME": "/quizAnswer" }
+    "QUIZ_ANSWER": { "ACCESS": [1], "NAME": "/quizAnswer" },
+    "QUIZ_RESULT": { "ACCESS": [1], "NAME": "/quizResult" }
   }
 }

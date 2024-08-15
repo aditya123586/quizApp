@@ -43,7 +43,7 @@ class QuizAccessor {
   async quizAnswer(userId, quizQuestions, questionId, selectedOption, quizId) {
     console.log(JSON.stringify(quizResultMaster, null, 4));
     const question = quizQuestions.filter((question) => {
-      return question.id == questionId;
+      return question.questionId == questionId;
     });
 
     if (!question.length) {

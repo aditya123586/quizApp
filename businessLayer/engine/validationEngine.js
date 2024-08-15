@@ -8,32 +8,13 @@ const errors = stringMessageAccessor.getMessages("en").ERRORS;
 class ValidationEngine {
   constructor() {
     this.uniqueIds = (array, helper) => {
-      const ids = array.map((item) => item.id);
+      const ids = array.map((item) => item.questionId);
       const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
       if (duplicates.length > 0) {
         return helper.message(`${errors.DUPLICATE_ID} ${duplicates[0]}`);
       }
       return array;
     };
-
-    this.quizSchema = Joi.object({
-      id: Joi.number().integer().positive().required(), // Unique identifier for the quiz
-      title: Joi.string().required(), // Title of the quiz
-      questions: Joi.array()
-        .items(
-          Joi.object({
-            id: Joi.number().integer().positive().required(), // Unique identifier for the question
-            text: Joi.string().required(), // The question field is required
-            options: Joi.array()
-              .items(Joi.string().required())
-              .length(4)
-              .required(), // Options array with exactly 4 strings
-            correct_option: Joi.number().integer().min(0).max(3).required(),
-          })
-        )
-        .required()
-        .custom(this.uniqueIds), // List of questions
-    });
   }
 
   homeSchema() {
@@ -49,7 +30,7 @@ class ValidationEngine {
       questions: Joi.array()
         .items(
           Joi.object({
-            id: Joi.number().integer().positive().required(), // Unique identifier for the question
+            questionId: Joi.number().integer().positive().required(), // Unique identifier for the question
             text: Joi.string().required(), // The question field is required
             options: Joi.array()
               .items(Joi.string().required())
@@ -66,7 +47,7 @@ class ValidationEngine {
   quizQuestionsSchema() {
     return Joi.object({
       user_id: Joi.number().integer().positive().required(), // ID of the user
-      id: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
+      quizId: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
     });
   }
 
@@ -76,6 +57,13 @@ class ValidationEngine {
       quiz_id: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
       question_id: Joi.number().integer().positive().required(), // ID of the question being answered
       selected_option: Joi.number().integer().min(0).max(3).required(), // Index of the selected answer
+    });
+  }
+
+  quizResultsSchema() {
+    return Joi.object({
+      user_id: Joi.number().integer().positive().required(), // ID of the user
+      quiz_id: Joi.number().integer().positive().required(), // Numeric id field that must be a positive integer
     });
   }
 }
